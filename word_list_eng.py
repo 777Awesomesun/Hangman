@@ -4,12 +4,12 @@ seven_letter_words = [
     "bicycle",
     "plumage",
     "silence",
-    "forestry"
+    "victory"
 ]
 
 # 8-letter words
 eight_letter_words = [
-    "rainbow",
+    "raindeer",
     "elephant",
     "favorite",
     "necklace",
@@ -22,13 +22,13 @@ nine_letter_words = [
     "scarecrow",
     "butterfly",
     "adventure",
-    "campfire"
+    "campfires"
 ]
 
 # 10-letter words
 ten_letter_words = [
     "harvesting",
-    "landscape",
+    "halloweens",
     "reflection",
     "wildflower",
     "meditation"
