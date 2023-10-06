@@ -42,3 +42,5 @@ eleven_letter_words = [
     "hälsosamhet",
     "arkebuserar"
 ]
+
+blanks = ["▓", "▓", "▓", "▓", "▓", "▓", "▓", "▓", "▓", "▓", "▓"]
