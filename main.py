@@ -2,7 +2,16 @@ import random
 import art_stages_logo as art
 
 print(art.logo,"\n")
-lang = int(input("1 För Engelska ord eller 2 för Svenska:"))
+
+while True:
+    try:
+        lang = int(input("1 for English words or 2 for Swedish:"))
+        if lang in [1, 2]:
+            break
+        else:
+            print("Invalid input. Please enter 1 or 2.\n")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
 
 #import word list in users choice of language
 
@@ -13,7 +22,7 @@ else:
 
 challenge_level = int(input("Välj längd på ordet. 7, 8, 9, 10 eller 11:"))
 
-bbblanks = word_list.blanks
+display = []
 
 #generate the hidden word
 
@@ -37,8 +46,22 @@ while True:
         print("\nFörsök igen.\n")
         continue
 
-blanks_itirations = len(hidden_word)
-print("\n")
-for i in range(blanks_itirations):
-    first = bbblanks[i]
-    print(first, end=" ")
+#give the lenght of the word
+word_lenght = len(hidden_word)
+
+for _ in range(word_lenght):
+    display += "▓"
+
+print(" ".join(display))
+
+guess = input(f"Guess character in the {challenge_level} letter word").lower()
+life = len(hidden_word)
+
+for position in range(word_lenght):
+    letter = hidden_word[position]
+    if letter == guess:
+        display[position] = letter
+        print("Right!")
+        print(" ".join(display))
+
+print(" ".join(display))
