@@ -16,30 +16,7 @@ def dramatisk_paus():
     time.sleep(0.5)
 
 def visual_hangman():
-    if life == 11:
-        print(art.stages[11])
-    elif life == 10:
-        print(art.stages[10])
-    elif life == 9:
-        print(art.stages[9])
-    elif life == 8:
-        print(art.stages[8])
-    elif life == 7:
-        print(art.stages[7])
-    elif life == 6:
-        print(art.stages[6])
-    elif life == 5:
-        print(art.stages[5])
-    elif life == 4:
-        print(art.stages[4])
-    elif life == 3:
-        print(art.stages[3])
-    elif life == 2:
-        print(art.stages[2])
-    elif life == 1:
-        print(art.stages[1])
-    elif life == 0:
-        print(art.stages[0])
+    print(art.stages[life])
 
 print(art.logo,"\n")
 
@@ -114,9 +91,6 @@ print(" ".join(display))
 dramatisk_paus()
 print(hidden_word, "\n")
 
-
-print(life)
-
 #The main functio.
 #The user guesses a letter and we itirate through all the letters from the hidden word in the
 #word and sees if it is a match.
@@ -137,7 +111,6 @@ while not end_of_game:
             dramatisk_paus()
             print(" ".join(display))
             dramatisk_paus()
-            print(life)
 
     if guess not in hidden_word:
         life -= 1
@@ -146,14 +119,14 @@ while not end_of_game:
         visual_hangman()
         print(" ".join(display))
         dramatisk_paus()
-        print(life)
     
     if "▓" not in display:
         dramatisk_paus()
+        print(art.logo)
         print("You win!")
         end_of_game = True
     
     elif life <= 0:
         dramatisk_paus()
-        print(art.stages[0])
+        print(art.gameover_logo)
         break
