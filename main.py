@@ -156,6 +156,4 @@ while not end_of_game:
     elif life <= 0:
         dramatisk_paus()
         print(art.stages[0])
-        for u in range(20):
-            print(art.stages[u])
         break
