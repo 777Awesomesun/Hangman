@@ -1,3 +1,4 @@
+from pickle import FALSE
 import random
 import art_stages_logo as art
 
@@ -54,14 +55,32 @@ for _ in range(word_lenght):
 
 print(" ".join(display))
 
-guess = input(f"Guess character in the {challenge_level} letter word").lower()
+print(hidden_word, "\n")
+
 life = len(hidden_word)
 
-for position in range(word_lenght):
-    letter = hidden_word[position]
-    if letter == guess:
-        display[position] = letter
-        print("Right!")
-        print(" ".join(display))
+end_of_game = False
 
-print(" ".join(display))
+#The main functio.
+#The user guesses a letter and we itirate through all the letters from the hidden word in the
+#word and sees if it is a match.
+
+while not end_of_game:
+
+    guess = input(f"Guess character in the {challenge_level} letter word\n").lower()
+
+    for position in range(word_lenght):
+
+        letter = hidden_word[position]
+
+        if letter == guess:
+
+            display[position] = letter
+            print("Right!")
+            print(" ".join(display))
+
+    print(" ".join(display))
+    
+    if "▓" not in display:
+        
+        end_of_game = True
