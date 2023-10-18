@@ -94,9 +94,6 @@ for _ in range(word_lenght):
 dramatisk_paus()
 display_word()
 
-dramatisk_paus()
-print(hidden_word, "\n")
-
 ''' 
 The main function. The user guesses a letter and we itirate through all the letters 
 from the hidden word in the and sees if it is a match.
@@ -104,7 +101,7 @@ from the hidden word in the and sees if it is a match.
 
 while not end_of_game:
     dramatisk_paus()
-    guess = input(f"Guess letter in the {challenge_level} letter word\n").lower()
+    guess = input(f"Guess letter in the {challenge_level} letter word, you have {life} life left.\n").lower()
 
     for position in range(word_lenght):
 
@@ -118,8 +115,8 @@ while not end_of_game:
             dramatisk_paus()
             display_word()
             dramatisk_paus()
-
-    if guess not in hidden_word:
+            
+    if guess not in hidden_word and guess not in gissade_ord:
         life -= 1
         dramatisk_paus()
         print("That letter is not in the word.")
@@ -127,6 +124,11 @@ while not end_of_game:
         dramatisk_paus()
         visual_hangman()
         display_word()
+    elif guess not in hidden_word and guess in gissade_ord:
+        print()
+        gissade_ord.append(guess)
+        print("You already guessed that!\n")
+    
 
     
     if "▓" not in display:
@@ -139,5 +141,5 @@ while not end_of_game:
         dramatisk_paus()
         print(art.gameover_logo)
         samman_gissade_ord = ", ".join(gissade_ord)
-        print(f"You guessed {samman_gissade_ord}.")
+        print(f"You guessed {samman_gissade_ord}. and the word was {hidden_word}")
         break
