@@ -42,6 +42,3 @@ eleven_letter_words = [
     "remembrance",
     "temperature"
 ]
-
-blanks = ["▓", "▓", "▓", "▓", "▓", "▓", "▓", "▓", "▓", "▓", "▓"]
-

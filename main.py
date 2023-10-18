@@ -4,7 +4,14 @@ import art_stages_logo as art
 
 display = []
 
+gissade_ord = []
+
 end_of_game = False 
+
+#When user gets <0 life he come here to the "game over" function
+
+def display_word():
+    print(" ".join(display))
 
 def game_over():
     print("You loose!")
@@ -20,8 +27,6 @@ def visual_hangman():
 
 print(art.logo,"\n")
 
-#When user gets <0 life he come here to the game over function
-
 while True:
     try:
         lang = int(input("1 for English words or 2 for Swedish:"))
@@ -33,8 +38,9 @@ while True:
     except ValueError:
         dramatisk_paus()
         print("Invalid input. Please enter a number.")
-
+'''
 #import word list in users choice of language
+'''
 
 if lang == 1:
     import word_list_eng as word_list
@@ -86,14 +92,15 @@ for _ in range(word_lenght):
     display += "▓"
 
 dramatisk_paus()
-print(" ".join(display))
+display_word()
 
 dramatisk_paus()
 print(hidden_word, "\n")
 
-#The main functio.
-#The user guesses a letter and we itirate through all the letters from the hidden word in the
-#word and sees if it is a match.
+''' 
+The main function. The user guesses a letter and we itirate through all the letters 
+from the hidden word in the and sees if it is a match.
+'''
 
 while not end_of_game:
     dramatisk_paus()
@@ -109,24 +116,28 @@ while not end_of_game:
             print("Right!\n")
             visual_hangman()
             dramatisk_paus()
-            print(" ".join(display))
+            display_word()
             dramatisk_paus()
 
     if guess not in hidden_word:
         life -= 1
         dramatisk_paus()
-        print("Wrong!")
-        visual_hangman()
-        print(" ".join(display))
+        print("That letter is not in the word.")
+        gissade_ord.append(guess)
         dramatisk_paus()
+        visual_hangman()
+        display_word()
+
     
     if "▓" not in display:
         dramatisk_paus()
-        print(art.logo)
+        print(art.win_logo)
         print("You win!")
         end_of_game = True
     
     elif life <= 0:
         dramatisk_paus()
         print(art.gameover_logo)
+        samman_gissade_ord = ", ".join(gissade_ord)
+        print(f"You guessed {samman_gissade_ord}.")
         break
